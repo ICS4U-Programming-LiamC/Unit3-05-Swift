@@ -131,34 +131,40 @@ public func getStudent(_ studentList: [Student]) -> Int {
 }
 
 func lineReader() -> String {
-  let temp = readLine()!
-  return temp
+  if let temp = readLine() {
+    return temp
+  } else {
+    return "Probably nil"
+  }
 }
 
 // main function
 func main() {
-  let file = "testCases.txt"
-  let testStrings: [String] = readFile(file)
-  var studentArray: [Student] = [Student("", "", "", 0, false)]
+  //let file = "testCases.txt"
+  //let testStrings: [String] = readFile(file)
+  
+  var studentArray: [Student] = [Student("Liam", "M", "Csiffary", 12, false)]
+  studentArray.append(Student("Housein", "N.M.N", "Shaib", 12, true))
+  studentArray.append(Student("Andy", "D", "Frigstad", 12, false))
 
-  var i = 0
-  while (i < testStrings.count) {
-    while (testStrings[i] == "") {
-      i += 1
-    }
+  // var i = 0
+  // while (i < testStrings.count) {
+  //   while (testStrings[i] == "") {
+  //     i += 1
+  //   }
 
-    if (testStrings[i + 1] == "_") {
-      let student = Student(testStrings[i], "N.M.N", testStrings[i + 2],
-            Int(testStrings[i + 3])!, Bool(testStrings[i + 4])!);
-      studentArray.append(student)
-    } else {
-      let student = Student(testStrings[i], testStrings[i + 1], testStrings[i + 2],
-            Int(testStrings[i + 3])!, Bool(testStrings[i + 4])!);
-      studentArray.append(student)
-    }
-    i += 5
-  }
-  studentArray.remove(at: 0)
+  //   if (testStrings[i + 1] == "_") {
+  //     let student = Student(testStrings[i], "N.M.N", testStrings[i + 2],
+  //           Int(testStrings[i + 3])!, Bool(testStrings[i + 4])!);
+  //     studentArray.append(student)
+  //   } else {
+  //     let student = Student(testStrings[i], testStrings[i + 1], testStrings[i + 2],
+  //           Int(testStrings[i + 3])!, Bool(testStrings[i + 4])!);
+  //     studentArray.append(student)
+  //   }
+  //   i += 5
+  // }
+  // studentArray.remove(at: 0)
   
   for each in studentArray {
     each.display()
@@ -168,6 +174,7 @@ func main() {
   while (true) {
     print("Would you like to edit these students? (y/n) or view students? (view)")
     let userInputYNView = lineReader()
+    print(userInputYNView)
 
     
     if (userInputYNView == "y") {
@@ -225,7 +232,7 @@ func main() {
           
         } else if (userInputProp == "IEP") {
           var IEPBool = false
-          while (true) {cd 
+          while (true) {
             print("Please input true/false")
             let userInputIEP = readLine() ?? ""
 
@@ -254,6 +261,7 @@ func main() {
       print("Please enter either 'y' or 'n'")
     }
   }
+  print("Exited")
 }
 
 main()
